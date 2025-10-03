@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted   # ya phir wahi label jo runner me hai (ex: GitHub_DevOps)
+    runs-on: GitHub_DevOps   # ya phir wahi label jo runner me hai (ex: GitHub_DevOps)
 
     steps:
       - name: Checkout repo
@@ -24,3 +24,4 @@ jobs:
 
       - name: Terraform Apply
         run: terraform apply -auto-approve tfplan
+
