@@ -17,12 +17,10 @@ jobs:
           terraform_version: 1.7.5
 
       - name: Terraform Init
-        run: terraform init
+        run: terraform -chdir=env/dev init
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
+        run: terraform -chdir=env/dev plan -out=tfplan
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve tfplan
-
-
+        run: terraform -chdir=env/dev apply -auto-approve tfplan
