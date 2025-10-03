@@ -1,8 +1,12 @@
 name: "Dev Terraform Workflow"
-on : workflow_dispatch
+
+on:
+  workflow_dispatch:
+
 jobs:
   build:
-    runs-on: GitHub_DevOps
+    runs-on: self-hosted   # ya phir wahi label jo runner me hai (ex: GitHub_DevOps)
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -10,7 +14,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: 1.7.5   # apni version dal sakte ho
+          terraform_version: 1.7.5
 
       - name: Terraform Init
         run: terraform init
