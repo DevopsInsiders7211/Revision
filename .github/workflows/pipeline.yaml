@@ -1,0 +1,22 @@
+name: "Dev Terraform Workflow"
+on : workflow_dispatch
+jobs:
+  build:
+    runs-on: GitHub_DevOps
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5   # apni version dal sakte ho
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve tfplan
